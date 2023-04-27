@@ -4,8 +4,10 @@
 const { test, expect } = require('@playwright/test');
 const LoginPage = require('.././page/login.page');
 const HomePage = require('.././page/home.page');
+import Chance from 'chance';
 
 let loginPage, homePage;
+var chance = new Chance();
 
 test.describe('Login', () => {
    test.use({ storageState: 'login_storage.json' });
@@ -33,12 +35,13 @@ test.describe('Login Failure', () => {
 
    test('2. Login Failure A', async ({ page }) => {
       
-      var user = "User";
-      var pasw = "pasw";
+      //Usig chance to generate random data
+      var username = chance.first();
+      var pasword = chance.string();
    
       await loginPage.page.goto('/login');
-      await loginPage.fillEmailTxt(user);
-      await loginPage.fillPasswordTxt(pasw);
+      await loginPage.fillEmailTxt(username);
+      await loginPage.fillPasswordTxt(pasword);
       await loginPage.clickLoginBtn();
       
       await expect (loginPage.getWrongCredentialsTxt()).toBeVisible();
