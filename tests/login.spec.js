@@ -30,7 +30,7 @@ test.describe('Login Failure', () => {
       loginPage = new LoginPage(page);
    });
 
-   test.only('2. Login Failure A', async () => {
+   test('2. Login Failure A', async () => {
       
       //Usig chance to generate random data
       var username = chance.first();

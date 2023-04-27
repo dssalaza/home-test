@@ -1,8 +1,10 @@
 import { test, expect} from '@playwright/test';
 import LoginPage from '.././page/login.page';
 import SearchPage from '.././page/search.page';
+import Chance from 'chance';
 
 let loginPage, searchPage;
+var chance = new Chance();
 
 test.describe('Search ', () => {
    test.use({ storageState: 'login_storage.json' });
@@ -14,7 +16,7 @@ test.describe('Search ', () => {
 
    test('9. Search Success', async () => {
 
-      var word = "automation";
+      var word = chance.word();
 
       await loginPage.page.goto('/search');
       await searchPage.fillSearchWordBar(word);

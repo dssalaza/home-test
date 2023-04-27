@@ -51,7 +51,7 @@ class FormPage extends BasePage {
     async checkShippingAddressCb(){
       let verifyShipping = await this.page.locator(`xpath=//input[@type='checkbox']`)
       try{
-          await verifyShipping.check();
+          await verifyShipping.check(); 
       }catch{
           await verifyShipping.evaluate(node => node.checked = true);
       }
@@ -70,37 +70,9 @@ class FormPage extends BasePage {
       await this.page.locator('button', { hasText: 'Continue to checkout' }).click();
     }
 
-   //  async dialogAlertMsg(page){
-   //     page.on('dialog', async dialog => {      
-   //       // verify message of alert
-   //       return dialog.message()
-   //       console.log('prueba', msg)
-   //      // expect(dialog.message()).toContain('Shipping address same as billing checkbox must be selected.');
-         
-   //       //click on alert ok button
-   //       //await dialog.accept();
-   //     });
-   //  }
-
-   getPriceProductOneTxt(){
-      return this.page.getByText('$15');
-   }
-
-   getPriceProductTwoTxt(){
-      return this.page.getByText('$5');
-   }
-
-   getPriceProductThreeTxt(){
-      return this.page.getByText('$8');
-   }
-
-   getPriceProductFourTxt(){
-      return this.page.getByText('$2');
-   }
-
-   getPriceProductTotalTxt(){
-      return this.page.getByText('$30');
-   }
+    getPriceProductTxt(position){
+      return this.page.locator(`xpath=//span[@class='price']`).nth(position);
+    }
     
     async navigate(){
         super.navigate('');

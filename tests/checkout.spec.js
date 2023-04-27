@@ -17,7 +17,7 @@ test.describe('Checkout', () => {
       homePage = new HomePage(page);
    });
 
-   test('4. Checkout Form Order Success', async () => {
+   test.only('4. Checkout Form Order Success', async () => {
 
    await loginPage.page.goto('/checkout');
 
@@ -33,7 +33,10 @@ test.describe('Checkout', () => {
    await formPage.fillExpYearTxt(chance.exp_year());
    await formPage.fillCvvTxt(chance.integer({ min: 0, max: 999 }).toString());
    
+   //expect.soft(await formPage.isChecked(checkShippingAddressCb())).toBeFalsy()
+
    await formPage.checkShippingAddressCb();
+
    await formPage.clickContinueCheckoutBtn();
 
    await expect (homePage.getOrderNumberHeader()).toBeVisible();
@@ -44,22 +47,23 @@ test.describe('Checkout', () => {
    
       await loginPage.page.goto('/checkout');
    
-      await formPage.fillFullNameTxt('Mark');
-      await formPage.fillEmailTxt('mark2023@gmail.com');
-      await formPage.fillAddressTxt('Calanda');
-      await formPage.fillCityTxt('Orlando');
-      await formPage.fillStateTxt('Florida');
-      await formPage.fillZipTxt('32789');
-      await formPage.fillNameCardTxt('Mark');
-      await formPage.fillCreditCardNumberTxt('77777777777777');
-      await formPage.selectExpMonthCbo('January');
-      await formPage.fillExpYearTxt('2024');
-      await formPage.fillCvvTxt('123');
+      await formPage.fillFullNameTxt(chance.name());
+      await formPage.fillEmailTxt(chance.email());
+      await formPage.fillAddressTxt(chance.address());
+      await formPage.fillCityTxt(chance.city());
+      await formPage.fillStateTxt(chance.state());
+      await formPage.fillZipTxt(chance.zip());
+      await formPage.fillNameCardTxt(chance.first() + ' ' + chance.last());
+      await formPage.fillCreditCardNumberTxt(chance.cc());
+      await formPage.selectExpMonthCbo(chance.month());
+      await formPage.fillExpYearTxt(chance.exp_year());
+      await formPage.fillCvvTxt(chance.integer({ min: 0, max: 999 }).toString());
+
+
       await formPage.unCheckShippingAddressCb();
    
       await formPage.clickContinueCheckoutBtn();
 
-      // console.log('prueba', msg)
       await formPage.page.on('dialog', async dialog => {
              
          // Verify Dialog Message
@@ -67,6 +71,8 @@ test.describe('Checkout', () => {
              
          //Click on OK Button
          await dialog.accept();
+
+         expect(dialog).not.toBeVisible();
      });
 
    });
@@ -75,11 +81,12 @@ test.describe('Checkout', () => {
 
       await loginPage.page.goto('/checkout');
    
-      await expect (formPage.getPriceProductOneTxt()).toBeVisible();
-      await expect (formPage.getPriceProductTwoTxt()).toBeVisible();
-      await expect (formPage.getPriceProductThreeTxt()).toBeVisible();
-      await expect (formPage.getPriceProductFourTxt()).toBeVisible();
-   
-      await expect (formPage.getPriceProductTotalTxt()).toHaveText('$30'); 
+      await expect (formPage.getPriceProductTxt(1)).toHaveText('$15');
+      await expect (formPage.getPriceProductTxt(2)).toHaveText('$5');
+      await expect (formPage.getPriceProductTxt(3)).toHaveText('$8');
+      await expect (formPage.getPriceProductTxt(4)).toHaveText('$2');
+
+      await expect (formPage.getPriceProductTxt(5)).toHaveText('$30');
+
    });
 });
