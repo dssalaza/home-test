@@ -68,7 +68,6 @@ class FormPage extends BasePage {
 
     async clickContinueCheckoutBtn(){
       await this.page.locator('button', { hasText: 'Continue to checkout' }).click();
-      //await this.page.locator(`xpath=//button[@class='btn']`).click();
     }
 
    //  async dialogAlertMsg(page){

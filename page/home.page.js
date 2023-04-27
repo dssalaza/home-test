@@ -9,7 +9,7 @@ class HomePage extends BasePage {
    }
 
    getOrderNumberHeader(){
-      return this.page.locator(`xpath=//p[@data-id='ordernumber']`);
+      return this.page.getByTestId('ordernumber');
    }
 
     async navigate(){
