@@ -16,7 +16,7 @@ test.describe('Checkout', () => {
       formPage = new FormPage(page);
       homePage = new HomePage(page);
 
-      formPage.navigate();
+      await formPage.navigate();
    });
 
    test('4. Checkout Form Order Success', async () => {
