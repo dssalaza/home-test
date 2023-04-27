@@ -17,7 +17,7 @@ class LoginPage extends BasePage {
     }
 
     getWrongCredentialsTxt(){
-      return this.page.locator('id=signin-button');
+      return this.page.locator('id=message');
    }
     
     async navigate(){

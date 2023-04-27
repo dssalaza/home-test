@@ -14,7 +14,7 @@ test.describe('Login', () => {
       homePage = new HomePage(page);
    });
 
-   test('1. Login Success', async ({ page }) => {
+   test('1. Login Success', async () => {
 
     await loginPage.navigate();
   
@@ -30,7 +30,7 @@ test.describe('Login Failure', () => {
       loginPage = new LoginPage(page);
    });
 
-   test('2. Login Failure A', async ({ page }) => {
+   test.only('2. Login Failure A', async () => {
       
       //Usig chance to generate random data
       var username = chance.first();
@@ -41,10 +41,10 @@ test.describe('Login Failure', () => {
       await loginPage.fillPasswordTxt(pasword);
       await loginPage.clickLoginBtn();
       
-      await expect (loginPage.getWrongCredentialsTxt()).toBeVisible();
+      await expect (loginPage.getWrongCredentialsTxt()).toHaveText('Wrong credentials');
    });
 
-   test('3. Login Failure B', async ({ page }) => {
+   test('3. Login Failure B', async () => {
       
       var user = "";
       var pasw = "";
@@ -54,7 +54,7 @@ test.describe('Login Failure', () => {
       await loginPage.fillPasswordTxt(pasw);
       await loginPage.clickLoginBtn();
       
-      await expect (loginPage.getWrongCredentialsTxt()).toBeVisible();
+      await expect (loginPage.getWrongCredentialsTxt()).toHaveText('Fields can not be empty');
    });
 
 });
