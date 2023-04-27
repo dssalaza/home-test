@@ -16,7 +16,7 @@ class LoginPage extends BasePage {
         await this.page.click('id=signin-button');
     }
 
-    getWrongCredentialsTxt(){
+    getLoginMessageTxt(){
       return this.page.locator('id=message');
    }
     
