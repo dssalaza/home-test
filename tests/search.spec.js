@@ -1,9 +1,6 @@
-// @ts-check
-//require ('dotenv').config();
-
-const { test, expect } = require('@playwright/test');
-const LoginPage = require('../page/login.page');
-const SearchPage = require('../page/search.page');
+import { test, expect} from '@playwright/test';
+import LoginPage from '.././page/login.page';
+import SearchPage from '.././page/search.page';
 
 let loginPage, searchPage;
 
@@ -27,7 +24,7 @@ test.describe('Search ', () => {
    
    });
 
-   test('10. Search Empty', async ({ page }) => {
+   test.only('10. Search Empty', async ({ page }) => {
    
       var word = "";
 

@@ -1,9 +1,6 @@
-// @ts-check
-//require ('dotenv').config();
-
-const { test, expect } = require('@playwright/test');
-const LoginPage = require('../page/login.page');
-const GridPage = require('../page/grid.page');
+import { test, expect} from '@playwright/test';
+import LoginPage from '.././page/login.page';
+import GridPage from '../page/grid.page';
 
 let loginPage, gridPage;
 
