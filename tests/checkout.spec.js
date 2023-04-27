@@ -14,7 +14,7 @@ test.describe('Checkout', () => {
       homePage = new HomePage(page);
    });
 
-   test('4. Checkout Form Order Success', async ({ page }) => {
+   test('4. Checkout Form Order Success', async () => {
 
    await loginPage.page.goto('/checkout');
 
@@ -37,10 +37,9 @@ test.describe('Checkout', () => {
 
    });
 
-   test('5. Checkout Form Alert', async ({ page }) => {
+   test('5. Checkout Form Alert', async () => {
    
       await loginPage.page.goto('/checkout');
-
    
       await formPage.fillFullNameTxt('Mark');
       await formPage.fillEmailTxt('mark2023@gmail.com');
@@ -57,9 +56,8 @@ test.describe('Checkout', () => {
    
       await formPage.clickContinueCheckoutBtn();
 
-      // const msg = await formPage.dialogAlertMsg(page);
       // console.log('prueba', msg)
-      await page.on('dialog', async dialog => {
+      await formPage.page.on('dialog', async dialog => {
              
          // Verify Dialog Message
          expect(dialog.message()).toContain('Shipping address same as billing checkbox must be selected.');
@@ -70,7 +68,7 @@ test.describe('Checkout', () => {
 
    });
 
-   test('6. Cart Total Test', async ({ page }) => {
+   test('6. Cart Total Test', async () => {
 
       await loginPage.page.goto('/checkout');
    

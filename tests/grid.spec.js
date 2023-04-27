@@ -12,7 +12,7 @@ test.describe('Grid ', () => {
       gridPage = new GridPage(page);
    });
 
-   test('7. Grid Item Test', async ({ page }) => {
+   test('7. Grid Item Test', async () => {
 
       await loginPage.page.goto('/grid');
 
@@ -22,7 +22,7 @@ test.describe('Grid ', () => {
    
    });
 
-   test('8. Grid All Items Test', async ({ page }) => {
+   test('8. Grid All Items Test', async () => {
    
       await loginPage.page.goto('/grid');
    
