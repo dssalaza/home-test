@@ -4,52 +4,20 @@ class GridPage extends BasePage {
         super(page);
     }
 
-    getImagePositionOne(){
-      return this.page.locator(`xpath=//img[@src='images/classic.png']`);
+    getImageByName(name){
+      return this.page.locator(`xpath=//img[@src='images/${name}.png']`);
     }
 
-    getImagePositionTwo(){
-      return this.page.locator(`xpath=//img[@src='images/bacon.png']`);
+    getCardNumberByIndex(index){
+      return this.page.locator('data-test-id=card-number').nth(index);
     }
 
-    getImagePositionThree(){
-      return this.page.locator(`xpath=//img[@src='images/roll.png']`);
+    getCardNameByIndex(index){
+      return this.page.locator('data-test-id=item-name').nth(index);
     }
 
-    getImagePositionFour(){
-      return this.page.locator(`xpath=//img[@src='images/garlicmix.png']`);
-    }
-
-    getImagePositionFive(){
-      return this.page.locator(`xpath=//img[@src='images/margarita.png']`);
-    }
-
-    getImagePositionSix(){
-      return this.page.locator(`xpath=//img[@src='images/veggie.png']`);
-    }
-
-    getImagePositionSeven(){
-      return this.page.locator(`xpath=//img[@src='images/extrapeperoni.png']`);
-    }
-
-    getImagePositionEight(){
-      return this.page.locator(`xpath=//img[@src='images/evergreen.png']`);
-    }
-
-    getImagePositionNine(){
-      return this.page.locator(`xpath=//img[@src='images/bbqcheese.png']`);
-    }
-
-    getNumberPositionTxt(position){
-      return this.page.locator('data-test-id=card-number').nth(position);
-    }
-
-    getNamePositionTxt(position){
-      return this.page.locator('data-test-id=item-name').nth(position);
-    }
-
-    getPricePositionTxt(position){
-      return this.page.locator('id=item-price').nth(position);
+    getCardPriceByIndex(index){
+      return this.page.locator('id=item-price').nth(index);
     }
 
     getAddOrderPositionBtn(position){
@@ -57,7 +25,7 @@ class GridPage extends BasePage {
     }
     
     async navigate(){
-        super.navigate('');
+      await this.page.goto('/grid');
     }
 }
 module.exports = GridPage;
