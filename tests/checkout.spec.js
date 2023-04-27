@@ -15,11 +15,11 @@ test.describe('Checkout', () => {
       loginPage = new LoginPage(page);
       formPage = new FormPage(page);
       homePage = new HomePage(page);
+
+      formPage.navigate();
    });
 
-   test.only('4. Checkout Form Order Success', async () => {
-
-   await loginPage.page.goto('/checkout');
+   test('4. Checkout Form Order Success', async () => {
 
    await formPage.fillFullNameTxt(chance.name());
    await formPage.fillEmailTxt(chance.email());
@@ -32,11 +32,7 @@ test.describe('Checkout', () => {
    await formPage.selectExpMonthCbo(chance.month());
    await formPage.fillExpYearTxt(chance.exp_year());
    await formPage.fillCvvTxt(chance.integer({ min: 0, max: 999 }).toString());
-   
-   //expect.soft(await formPage.isChecked(checkShippingAddressCb())).toBeFalsy()
-
    await formPage.checkShippingAddressCb();
-
    await formPage.clickContinueCheckoutBtn();
 
    await expect (homePage.getOrderNumberHeader()).toBeVisible();
@@ -44,9 +40,7 @@ test.describe('Checkout', () => {
    });
 
    test('5. Checkout Form Alert', async () => {
-   
-      await loginPage.page.goto('/checkout');
-   
+      
       await formPage.fillFullNameTxt(chance.name());
       await formPage.fillEmailTxt(chance.email());
       await formPage.fillAddressTxt(chance.address());
@@ -58,29 +52,18 @@ test.describe('Checkout', () => {
       await formPage.selectExpMonthCbo(chance.month());
       await formPage.fillExpYearTxt(chance.exp_year());
       await formPage.fillCvvTxt(chance.integer({ min: 0, max: 999 }).toString());
+      await formPage.unCheckShippingAddressCb(); 
 
-
-      await formPage.unCheckShippingAddressCb();
-   
-      await formPage.clickContinueCheckoutBtn();
-
-      await formPage.page.on('dialog', async dialog => {
-             
-         // Verify Dialog Message
-         expect(dialog.message()).toContain('Shipping address same as billing checkbox must be selected.');
-             
-         //Click on OK Button
+      await formPage.page.on('dialog', async dialog => {           
+         expect(dialog.message()).toContain('Shipping address same as billing checkbox must be selected.');    
          await dialog.accept();
-
-         expect(dialog).not.toBeVisible();
      });
 
+     await formPage.clickContinueCheckoutBtn();
    });
 
    test('6. Cart Total Test', async () => {
-
-      await loginPage.page.goto('/checkout');
-   
+ 
       await expect (formPage.getPriceProductTxt(1)).toHaveText('$15');
       await expect (formPage.getPriceProductTxt(2)).toHaveText('$5');
       await expect (formPage.getPriceProductTxt(3)).toHaveText('$8');

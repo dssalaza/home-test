@@ -75,7 +75,7 @@ class FormPage extends BasePage {
     }
     
     async navigate(){
-        super.navigate('');
+      await this.page.goto('/checkout');
     }
 }
 module.exports = FormPage;
