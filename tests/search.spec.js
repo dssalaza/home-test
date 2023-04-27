@@ -15,7 +15,7 @@ test.describe('Search ', () => {
       searchPage = new SearchPage(page);
    });
 
-   test('Search Success', async ({ page }) => {
+   test('9. Search Success', async ({ page }) => {
 
       var word = "automation";
 
@@ -27,7 +27,7 @@ test.describe('Search ', () => {
    
    });
 
-   test('Search Empty', async ({ page }) => {
+   test('10. Search Empty', async ({ page }) => {
    
       var word = "";
 

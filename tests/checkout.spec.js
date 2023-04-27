@@ -17,7 +17,7 @@ test.describe('Checkout', () => {
       homePage = new HomePage(page);
    });
 
-   test('Checkout Form Order Success', async ({ page }) => {
+   test('4. Checkout Form Order Success', async ({ page }) => {
 
    await loginPage.page.goto('/checkout');
 
@@ -40,7 +40,7 @@ test.describe('Checkout', () => {
 
    });
 
-   test('Checkout Form Alert', async ({ page }) => {
+   test('5. Checkout Form Alert', async ({ page }) => {
    
       await loginPage.page.goto('/checkout');
 
@@ -73,7 +73,7 @@ test.describe('Checkout', () => {
 
    });
 
-   test('Cart Total Test', async ({ page }) => {
+   test('6. Cart Total Test', async ({ page }) => {
 
       await loginPage.page.goto('/checkout');
    

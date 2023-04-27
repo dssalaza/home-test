@@ -15,7 +15,7 @@ test.describe('Login', () => {
       homePage = new HomePage(page);
    });
 
-   test.only('1. Login Success', async ({ page }) => {
+   test('1. Login Success', async ({ page }) => {
 
     await loginPage.navigate();
   
@@ -31,7 +31,7 @@ test.describe('Login Failure', () => {
       loginPage = new LoginPage(page);
    });
 
-   test('Login Failure A', async ({ page }) => {
+   test('2. Login Failure A', async ({ page }) => {
       
       var user = "User";
       var pasw = "pasw";
@@ -44,7 +44,7 @@ test.describe('Login Failure', () => {
       await expect (loginPage.getWrongCredentialsTxt()).toBeVisible();
    });
 
-   test('Login Failure B', async ({ page }) => {
+   test('3. Login Failure B', async ({ page }) => {
       
       var user = "";
       var pasw = "";
