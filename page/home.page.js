@@ -4,8 +4,8 @@ class HomePage extends BasePage {
         super(page);
     }
     
-   getHomeLoginHeader(){
-      return this.page.getByText('johndoe19');
+   getWelcomeMessage(){
+      return this.page.getByTestId('username');
    }
 
    getOrderNumberHeader(){

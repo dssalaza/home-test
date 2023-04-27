@@ -40,7 +40,7 @@ test.describe('Checkout', () => {
 
    });
 
-   test.only('Checkout Form Alert', async ({ page }) => {
+   test('Checkout Form Alert', async ({ page }) => {
    
       await loginPage.page.goto('/checkout');
 

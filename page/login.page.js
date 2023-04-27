@@ -21,7 +21,7 @@ class LoginPage extends BasePage {
    }
     
     async navigate(){
-        super.navigate('');
+        await super.navigate('');
     }
 }
 module.exports = LoginPage;

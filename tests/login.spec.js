@@ -15,11 +15,12 @@ test.describe('Login', () => {
       homePage = new HomePage(page);
    });
 
-   test('Login Success', async ({ page }) => {
+   test.only('1. Login Success', async ({ page }) => {
 
     await loginPage.navigate();
   
-    await expect (homePage.getHomeLoginHeader()).toBeVisible();
+    await expect (homePage.getWelcomeMessage()).toHaveText('johndoe19');
+
    });
 
 });

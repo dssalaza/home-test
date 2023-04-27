@@ -5,8 +5,8 @@ async function loginSetup (FullConfig) {
     const browser = await chromium.launch();
     const page = await browser.newPage();
     const baseURL = FullConfig.projects[0].use.baseURL
-    var email = "johndoe19";
-    var password = "supersecret";
+    const email = "johndoe19";
+    const password = "supersecret";
 
     let loginPage = new LoginPage(page);
 
@@ -15,7 +15,6 @@ async function loginSetup (FullConfig) {
     await loginPage.fillPasswordTxt(password);
     await loginPage.clickLoginBtn();
     
-    console.log("Creation Login Storage");
     await loginPage.page.context().storageState(
       { path: 'login_storage.json' }
     );
