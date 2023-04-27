@@ -2,3 +2,7 @@ node_modules/
 /test-results/
 /playwright-report/
 /playwright/.cache/
+package-lock.json
+
+# Test generated files
+login_storage.json
