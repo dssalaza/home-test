@@ -20,8 +20,8 @@ class GridPage extends BasePage {
       return this.page.locator('id=item-price').nth(index);
     }
 
-    getAddOrderPositionBtn(position){
-      return this.page.locator('button', { hasText: 'Add to Order' }).nth(position);
+    getAddOrderBtnByIndex(index){
+      return this.page.locator('button', { hasText: 'Add to Order' }).nth(index);
     }
     
     async navigate(){
