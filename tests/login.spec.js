@@ -42,6 +42,7 @@ test.describe('Login Failure', () => {
       await loginPage.clickLoginBtn();
       
       await expect (loginPage.getLoginMessageTxt()).toHaveText('Wrong credentials');
+
    });
 
    test('3. Login Failure B', async () => {
@@ -54,6 +55,7 @@ test.describe('Login Failure', () => {
       await loginPage.clickLoginBtn();
       
       await expect (loginPage.getLoginMessageTxt()).toHaveText('Fields can not be empty');
+      
    });
 
 });

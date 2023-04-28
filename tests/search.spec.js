@@ -35,6 +35,6 @@ test.describe('Search ', () => {
       await searchPage.page.waitForLoadState('networkidle');
 
       await expect(searchPage.getResultContainerTxt()).toHaveText('Please provide a search word.');
-   ;
+      
    });
 });

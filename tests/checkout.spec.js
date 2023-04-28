@@ -21,21 +21,21 @@ test.describe('Checkout', () => {
 
    test('4. Checkout Form Order Success', async () => {
 
-   await formPage.fillFullNameTxt(chance.name());
-   await formPage.fillEmailTxt(chance.email());
-   await formPage.fillAddressTxt(chance.address());
-   await formPage.fillCityTxt(chance.city());
-   await formPage.fillStateTxt(chance.state());
-   await formPage.fillZipTxt(chance.zip());
-   await formPage.fillNameCardTxt(chance.first() + ' ' + chance.last());
-   await formPage.fillCreditCardNumberTxt(chance.cc());
-   await formPage.selectExpMonthCbo(chance.month());
-   await formPage.fillExpYearTxt(chance.exp_year());
-   await formPage.fillCvvTxt(chance.integer({ min: 0, max: 999 }).toString());
-   await formPage.checkShippingAddressCb();
-   await formPage.clickContinueCheckoutBtn();
+      await formPage.fillFullNameTxt(chance.name());
+      await formPage.fillEmailTxt(chance.email());
+      await formPage.fillAddressTxt(chance.address());
+      await formPage.fillCityTxt(chance.city());
+      await formPage.fillStateTxt(chance.state());
+      await formPage.fillZipTxt(chance.zip());
+      await formPage.fillNameCardTxt(chance.first() + ' ' + chance.last());
+      await formPage.fillCreditCardNumberTxt(chance.cc());
+      await formPage.selectExpMonthCbo(chance.month());
+      await formPage.fillExpYearTxt(chance.exp_year());
+      await formPage.fillCvvTxt(chance.integer({ min: 0, max: 999 }).toString());
+      await formPage.checkShippingAddressCb();
+      await formPage.clickContinueCheckoutBtn();
 
-   await expect (homePage.getOrderNumberHeader()).toBeVisible();
+      await expect (homePage.getOrderNumberHeader()).toBeVisible();
 
    });
 
@@ -60,6 +60,7 @@ test.describe('Checkout', () => {
      });
 
      await formPage.clickContinueCheckoutBtn();
+     
    });
 
    test('6. Cart Total Test', async () => {
