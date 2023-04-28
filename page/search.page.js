@@ -19,7 +19,7 @@ class SearchPage extends BasePage {
    }
     
     async navigate(){
-        super.navigate('');
+      await this.page.goto('/search');
     }
 }
 module.exports = SearchPage;

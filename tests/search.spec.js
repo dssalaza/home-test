@@ -12,28 +12,28 @@ test.describe('Search ', () => {
    test.beforeEach(async ({ page }) => {
       loginPage = new LoginPage(page);
       searchPage = new SearchPage(page);
+
+      await searchPage.navigate();
    });
 
    test('9. Search Success', async () => {
 
-      var word = chance.word();
+      var searchWord = chance.word();
 
-      await loginPage.page.goto('/search');
-      await searchPage.fillSearchWordBar(word);
-
+      await searchPage.fillSearchWordBar(searchWord);
       await searchPage.page.waitForLoadState('networkidle');
-      await expect(searchPage.getResultContainerTxt()).toHaveText(`Found one result for ${word}`);
+
+      await expect(searchPage.getResultContainerTxt()).toHaveText(`Found one result for ${searchWord}`);
    
    });
 
    test('10. Search Empty', async () => {
    
-      var word = "";
+      var searchWord = "";
 
-      await loginPage.page.goto('/search');
-      await searchPage.fillSearchWordBar(word);
-
+      await searchPage.fillSearchWordBar(searchWord);
       await searchPage.page.waitForLoadState('networkidle');
+
       await expect(searchPage.getResultContainerTxt()).toHaveText('Please provide a search word.');
    ;
    });
