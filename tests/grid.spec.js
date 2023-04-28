@@ -22,7 +22,7 @@ test.describe('Grid ', () => {
    
    });
 
-   test.only('8. Grid All Items Test', async () => {
+   test('8. Grid All Items Test', async () => {
     
       await expect (gridPage.getCardNameByIndex(0)).toHaveText('Classic Muzzarella');
       await expect (gridPage.getCardPriceByIndex(0)).toBeVisible();
