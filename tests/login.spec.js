@@ -12,11 +12,11 @@ test.describe('Login', () => {
    test.beforeEach(async ({ page }) => {
       loginPage = new LoginPage(page);
       homePage = new HomePage(page);
+
+      await homePage.navigate();
    });
 
    test('1. Login Success', async () => {
-
-    await loginPage.navigate();
   
     await expect (homePage.getWelcomeMessage()).toHaveText('johndoe19');
 
@@ -28,15 +28,15 @@ test.describe('Login Failure', () => {
 
    test.beforeEach(async ({ page }) => {
       loginPage = new LoginPage(page);
+
+      await loginPage.navigate();
    });
 
    test('2. Login Failure A', async () => {
       
-      //Usig chance to generate random data
       var username = chance.first();
       var pasword = chance.string();
    
-      await loginPage.page.goto('/login');
       await loginPage.fillEmailTxt(username);
       await loginPage.fillPasswordTxt(pasword);
       await loginPage.clickLoginBtn();
@@ -49,7 +49,6 @@ test.describe('Login Failure', () => {
       var user = "";
       var pasw = "";
    
-      await loginPage.page.goto('/login');
       await loginPage.fillEmailTxt(user);
       await loginPage.fillPasswordTxt(pasw);
       await loginPage.clickLoginBtn();
